@@ -72,7 +72,7 @@ reading data from SQLite and temporarily representing that data in Ruby.
 Now we can start writing our methods to retrieve the data. To return all the
 songs in the database we need to execute the following SQL query:
 `SELECT * FROM songs`. Let's store that in a variable called `sql` using a
-heredoc (`<<-`) since our string will go onto multiple lines:
+heredoc (<<-) since our string will go onto multiple lines:
 
 ```ruby
 sql = <<-SQL
