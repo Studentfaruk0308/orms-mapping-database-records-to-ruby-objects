@@ -50,7 +50,8 @@ methods.
 
 The first thing to know is that the database, SQLite in our case, will return an
 array of data for each row. For example, a row for Michael Jackson's "Thriller"
-(356 seconds long) that has a db id of 1 would look like this: `[1, "Thriller", 356]`.
+(356 seconds long) that has a db id of 1 would look like this:
+`[1, "Thriller", 356]`.
 
 ```ruby
 def self.new_from_db(row)
@@ -69,8 +70,9 @@ reading data from SQLite and temporarily representing that data in Ruby.
 ## `Song.all`
 
 Now we can start writing our methods to retrieve the data. To return all the
-songs in the database we need to execute the following SQL query: `SELECT * FROM songs`. Let's store that in a variable called `sql` using a heredoc (`<<-`)
-since our string will go onto multiple lines:
+songs in the database we need to execute the following SQL query:
+`SELECT * FROM songs`. Let's store that in a variable called `sql` using a
+heredoc (`<<-`) since our string will go onto multiple lines:
 
 ```ruby
 sql = <<-SQL
@@ -80,11 +82,12 @@ SQL
 ```
 
 Next, we will make a call to our database using `DB[:conn]`. This `DB` hash is
-located in the `config/environment.rb` file: `DB = {:conn => SQLite3::Database.new("db/songs.db")}`. Notice that the value of the hash is
-actually a new instance of the `SQLite3::Database` class. This is how we will
-connect to our database. Our database instance responds to a method called
-`execute` that accepts raw SQL as a string. Let's pass in that SQL we stored
-above:
+located in the `config/environment.rb` file:
+`DB = {:conn => SQLite3::Database.new("db/songs.db")}`. Notice that the value of
+the hash is actually a new instance of the `SQLite3::Database` class. This is
+how we will connect to our database. Our database instance responds to a method
+called `execute` that accepts raw SQL as a string. Let's pass in that SQL we
+stored above:
 
 ```ruby
 class Song
